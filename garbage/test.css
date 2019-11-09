@@ -1,0 +1,89 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* 
+div {
+  outline: 1px salmon solid;
+} */
+
+#game-display {
+  display: flex;
+  justify-content: space-around;
+}
+body {
+  background-color: #0e3304;
+  height: 100vh;
+  width: 100vw;
+}
+
+.hand {
+  display: inline-flex;
+  width: 30vw;
+
+  border: 0.6vw solid rgba(255, 255, 255, 0.3);
+  border-radius: 1vw;
+}
+.card {
+  height: 100%;
+  width: 100%;
+}
+.card-content {
+  width: 25%;
+  height: 100%;
+  margin: 1vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 0.7vw;
+  position: relative;
+  transition: transform 1s cubic-bezier(1, 0, 1, 0.7);
+  transform-style: preserve-3d;
+}
+
+img {
+  max-width: 100%;
+}
+
+.card-face,
+.card-back {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  display: grid;
+  align-content: center;
+}
+.card-face {
+  transform: rotateY(0.5turn);
+}
+.card-back {
+}
+
+.label {
+  color: rgba(255, 255, 255, 0.3);
+
+  font-family: monospace;
+  font-weight: 800;
+  writing-mode: vertical-lr;
+  text-transform: uppercase;
+  font-size: 2vw;
+  transform: rotate(180deg);
+  text-align: center;
+}
+
+.score-display {
+  color: rgba(255, 255, 255, 0.6);
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: 2vw;
+  outline: 1px solid red;
+  margin: auto;
+}
+
+.card:hover .card-content {
+  transform: rotateY(0.5turn);
+}
