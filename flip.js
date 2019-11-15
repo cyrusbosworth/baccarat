@@ -10,83 +10,42 @@ const bankerCard1 = document.querySelector(".banker .first-card");
 const bankerCard2 = document.querySelector(".banker .second-card");
 const bankerCard3 = document.querySelector(".banker .third-card");
 
-const dealBtn = document.querySelector("#deal");
-
 const allCards = [playerCard1, playerCard2, bankerCard1, bankerCard2, playerCard3, bankerCard3];
-const deck = new Deck();
-let gameCount = 0;
-deck.cut(200);
-deck.burn();
-const games = [];
-while (deck.hasCards) {
-  games.push(play(deck));
-}
 
-// setInterval(() => {
-//   allCards.forEach(card => {
-//     card.classList.toggle("card-in");
-//   });
-//   console.log("boop");
-// }, 3000);
-
-var cards = document.querySelectorAll(".card");
-cards.forEach(card => {
-  card.addEventListener("click", function() {
-    console.log("click");
-    card.classList.toggle("card-in");
-  });
-});
-
-dealBtn.addEventListener("click", () => {
-  console.log("click");
-  dealBtn.style.opacity = 0;
-  allCards.forEach(card => {
-    card.classList.remove("card-in");
-  });
-  setCards(games[gameCount]);
+export default function flipCards(game) {
+  clear();
+  setCards(game);
 
   setTimeout(() => {
-    allCards.forEach(card => {
-      card.classList.add("card-in");
-      dealBtn.style.opacity = 1;
-    });
-  }, 2000);
+    playerCard1.classList.add("card-in");
+    playerCard2.classList.add("card-in");
+  }, 250);
 
-  // allCards.forEach(card => {
-  //   card.classList.remove("card-in");
-  //   card.classList.add("card-out");
-  // });
+  setTimeout(() => {
+    bankerCard1.classList.add("card-in");
+    bankerCard2.classList.add("card-in");
+  }, 3000);
 
-  // clear();
-  // setTimeout(() => {
-  //   setCards(games[gameCount]);
-  //   allCards.forEach(card => {
-  //     card.style.animation = "card-in 3s forwards";
-  //   });
-  //   gameCount++;
-  // }, 1500);
-
-  console.log("doneflip");
-});
-
-//use a css animation to fade in and flip and reflip and disappear
+  if (game.playerHand[2]) {
+    setTimeout(() => {
+      playerCard3.classList.add("card-in");
+    }, 5500);
+    if (game.bankerHand[2]) {
+      setTimeout(() => {
+        bankerCard3.classList.add("card-in");
+      }, 8000);
+    }
+  } else if (game.bankerHand[2]) {
+    setTimeout(() => {
+      bankerCard3.classList.add("card-in");
+    }, 5500);
+  }
+}
 
 function clear() {
   allCards.forEach(card => {
-    card.style.animation = "card-out 1s forwards";
+    card.classList.remove("card-in");
   });
-}
-
-function flipCard(card) {
-  card.classList.toggle("face-up");
-}
-
-function dealCard(card) {
-  card.style.opacity = "1";
-}
-
-function placeCard(card) {
-  card.style.opacity = "1";
 }
 
 function setCards(game) {
@@ -103,11 +62,4 @@ function setCards(game) {
   if (game.bankerHand[2]) {
     bankerCard3.firstElementChild.style.backgroundImage = `url(${game.bankerHand[2].path})`;
   }
-}
-
-function reveal(game) {
-  for (leti = 0; i < 4; i++) {
-    dealCard(allCards[i]);
-  }
-  setTimeout;
 }

@@ -70,16 +70,8 @@ body {
   background-size: 100%;
 }
 
-/* .card.face-up {
-  transform: rotateY(-180deg);
-}
-
-.card.visible {
-  opacity: 1;
-} */
-
 .card-in {
-  transition: opacity 750ms, transform 1200ms 1200ms;
+  transition: opacity 750ms, transform 1500ms 750ms;
   transform: rotateY(-180deg);
   opacity: 1;
 }

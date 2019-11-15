@@ -9,64 +9,57 @@
   </head>
 
   <body>
+    <div class="game-display">
+      <div class="hand player">
+        <div class="label">Player</div>
+        <div class="scene">
+          <div class="card third-card">
+            <div class="card-face front"></div>
+            <div class="card-face back"></div>
+          </div>
+        </div>
+        <div class="gap"></div>
+        <div class="scene">
+          <div class="card second-card">
+            <div class="card-face front"></div>
+            <div class="card-face back"></div>
+          </div>
+        </div>
+        <div class="scene">
+          <div class="card first-card">
+            <div class="card-face front"></div>
+            <div class="card-face back"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hand banker">
+        <div class="scene">
+          <div class="card first-card">
+            <div class="card-face front"></div>
+            <div class="card-face back"></div>
+          </div>
+        </div>
+        <div class="scene">
+          <div class="card second-card">
+            <div class="card-face front"></div>
+            <div class="card-face back"></div>
+          </div>
+        </div>
+        <div class="gap"></div>
+        <div class="scene">
+          <div class="card third-card">
+            <div class="card-face front"></div>
+            <div class="card-face back"></div>
+          </div>
+        </div>
+        <div class="label">Banker</div>
+      </div>
+    </div>
+
     <button id="play">DEAL</button>
     <button id="flip">FLIP</button>
 
-    <div id="display">
-      <div class="player_cards">
-        <div class="hand">
-          <div class="card" id="pc3">
-            <div class="card_content">
-              <img src="cards/1B.svg" class="card_front" alt="" />
-
-              <img src="cards/JH.svg" class="card_back" alt="" />
-            </div>
-          </div>
-
-          <div class="card" id="pc2">
-            <div class="card_content">
-              <img src="cards/1B.svg" class="card_front" alt="" />
-
-              <img src="cards/JH.svg" class="card_back" alt="" />
-            </div>
-          </div>
-
-          <div class="card" id="pc1">
-            <div class="card_content">
-              <img src="cards/1B.svg" class="card_front" alt="" />
-
-              <img src="cards/JH.svg" class="card_back" alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hand">
-        <div class="card" id="bc1">
-          <div class="card_content">
-            <img src="cards/1B.svg" class="card_front" alt="" />
-
-            <img src="cards/JH.svg" class="card_back" alt="" />
-          </div>
-        </div>
-
-        <div class="card" id="bc2">
-          <div class="card_content">
-            <img src="cards/1B.svg" class="card_front" alt="" />
-
-            <img src="cards/JH.svg" class="card_back" alt="" />
-          </div>
-        </div>
-
-        <div class="card" id="bc3">
-          <div class="card_content">
-            <img src="cards/1B.svg" class="card_front" alt="" />
-
-            <img src="cards/JH.svg" class="card_back" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
     <div id="board"></div>
     <script src="app.js" type="module"></script>
   </body>
