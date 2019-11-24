@@ -8,28 +8,40 @@ body {
   background-color: #0e3304;
   height: 100vh;
   width: 100vw;
+  z-index: 0;
 }
 
 /* Board Styling */
+
+/* delete first children on overflow */
 
 #board {
   background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"%3E%3Cg fill="%239C92AC" fill-opacity="0.2"%3E%3Cpath fill-rule="evenodd" d="M0 0h4v4H0V0zm4 4h4v4H4V4z"/%3E%3C/g%3E%3C/svg%3E');
   background-size: 4vw;
   height: 14vw;
-  margin: 100px auto;
+  margin: auto;
   width: 90vw;
   display: flex;
+  box-sizing: content-box;
+  padding: 2vw;
+  overflow-x: auto;
 
   background-color: #ddd;
-  overflow-x: auto;
+  background-clip: content-box;
+
+  z-index: 99;
+  outline: 0.4vw solid rgba(0, 0, 0, 0.3);
+  outline-offset: -2vw;
 }
 
 .dot {
   border-radius: 50%;
   width: 2vw;
   display: flex;
-
-  transition: transform 1s;
+  transform: scale(0);
+  transition: transform 1s cubic-bezier(0, 0, 0.25, 4);
+  z-index: 100;
+  border: 0.1vh solid rgba(0, 0, 0, 0.5);
 }
 
 .dot:hover {
@@ -47,7 +59,7 @@ body {
 
 .bonus {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1vw;
+  font-size: 0.8vw;
   margin: auto;
   color: white;
   font-weight: 600;
@@ -80,14 +92,14 @@ div .run {
 }
 .hand {
   display: inline-flex;
-  border: 0.6vw solid rgba(255, 255, 255, 0.3);
+  border: 0.8vw solid rgba(255, 255, 255, 0.3);
   border-radius: 1vw;
 }
 
 .label {
   color: rgba(255, 255, 255, 0.7);
-  font-family: monospace;
-  font-weight: 800;
+  font-family: "Montserrat", monospace;
+  font-weight: 900;
   padding-top: 2.5vw;
   font-size: 2vw;
   width: 2vw;
@@ -147,4 +159,43 @@ div .run {
   transition: opacity 750ms, transform 1500ms 750ms;
   transform: rotateY(-180deg);
   opacity: 1;
+}
+
+input[type="number"] {
+  height: 3vw;
+  width: 3vw;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 2.5vw;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  text-align: center;
+}
+
+input[type="number"]:hover {
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#bet-table * {
+  outline: 1px red solid;
+}
+
+#bankroll {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Montserrat", monospace;
+  font-weight: 900;
+  font-size: 2vw;
+}
+
+.row {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Montserrat", monospace;
+  font-weight: 900;
+  font-size: 2vw;
 }

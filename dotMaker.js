@@ -1,5 +1,6 @@
 const board = document.querySelector("#board");
-
+//different timeouts for different amount of card flip animations per hand
+const timers = [5000, 7500, 9500];
 let currentRun;
 
 let currentWinner = 0;
@@ -13,10 +14,11 @@ newRun();
 
 export default function drawDot(game) {
   const dot = createDot(game);
-
   currentRun.appendChild(dot);
-  // dot.style.transition = "transform 1.5s";
-  //dot.style.transform = "scale(1)";
+  setTimeout(() => {
+    dot.style.transform = "scale(1)";
+    console.log(timers[game.cards - 4]);
+  }, timers[game.cards - 4]);
 }
 
 function createDot(game) {

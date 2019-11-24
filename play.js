@@ -7,7 +7,8 @@ export default function play(deck) {
     bankerScore: 0,
     isNatural: false,
     winner: null,
-    bonus: 0
+    bonus: 0,
+    cards: 0
   };
 
   startDeal(deck);
@@ -23,7 +24,7 @@ export default function play(deck) {
   }
 
   determineWinner();
-
+  game.cards = game.playerHand.length + game.bankerHand.length;
   return game;
 }
 
