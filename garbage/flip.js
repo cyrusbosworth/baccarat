@@ -1,3 +1,7 @@
+import Deck from "./Deck.js";
+import play from "./play.js";
+//TODO card out sweep animation
+const TIME = 750;
 const playerCard1 = document.querySelector(".player .first-card");
 const playerCard2 = document.querySelector(".player .second-card");
 const playerCard3 = document.querySelector(".player .third-card");
@@ -6,45 +10,42 @@ const bankerCard1 = document.querySelector(".banker .first-card");
 const bankerCard2 = document.querySelector(".banker .second-card");
 const bankerCard3 = document.querySelector(".banker .third-card");
 
-import timers from "./timer.js";
+const timers = [3000, 5500, 8000];
 
 const allCards = [playerCard1, playerCard2, bankerCard1, bankerCard2, playerCard3, bankerCard3];
 
 export default function flipCards(game) {
-  return new Promise(function(resolve, reject) {
-    clear();
-    setCards(game);
-    console.log("in promise");
+  clear();
+  setCards(game);
 
+  setTimeout(() => {
+    playerCard1.classList.add("card-in");
+    playerCard2.classList.add("card-in");
+  }, 250);
+
+  setTimeout(() => {
+    bankerCard1.classList.add("card-in");
+    bankerCard2.classList.add("card-in");
+  }, 3000);
+
+  if (game.playerHand[2]) {
     setTimeout(() => {
-      playerCard1.classList.add("card-in");
-      playerCard2.classList.add("card-in");
-    }, timers.firstDealPlayer);
-
-    setTimeout(() => {
-      bankerCard1.classList.add("card-in");
-      bankerCard2.classList.add("card-in");
-    }, timers.firstDealBanker);
-
-    if (game.playerHand[2]) {
-      setTimeout(() => {
-        playerCard3.classList.add("card-in");
-      }, timers.thirdCard1);
-      if (game.bankerHand[2]) {
-        setTimeout(() => {
-          bankerCard3.classList.add("card-in");
-        }, timers.thirdCard2);
-      }
-    } else if (game.bankerHand[2]) {
+      playerCard3.classList.add("card-in");
+    }, 5500);
+    if (game.bankerHand[2]) {
       setTimeout(() => {
         bankerCard3.classList.add("card-in");
-      }, timers.thirdCard1);
+      }, 8000);
     }
+  } else if (game.bankerHand[2]) {
     setTimeout(() => {
-      resolve();
-    }, timers.finishTimes[6 - game.cards]);
-  });
+      bankerCard3.classList.add("card-in");
+    }, 5500);
+  }
 }
+
+//cards on not clearing correct on FF
+//TODO no card transitions on EDGE
 
 function clear() {
   allCards.forEach(card => {
