@@ -1,6 +1,7 @@
 const board = document.querySelector("#board");
 //different timeouts for different amount of card flip animations per hand
 const timers = [5000, 7500, 9500];
+
 let currentRun;
 
 let currentWinner = 0;

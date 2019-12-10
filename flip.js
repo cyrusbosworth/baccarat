@@ -10,6 +10,8 @@ const bankerCard1 = document.querySelector(".banker .first-card");
 const bankerCard2 = document.querySelector(".banker .second-card");
 const bankerCard3 = document.querySelector(".banker .third-card");
 
+const timers = [3000, 5500, 8000];
+
 const allCards = [playerCard1, playerCard2, bankerCard1, bankerCard2, playerCard3, bankerCard3];
 
 export default function flipCards(game) {
@@ -41,6 +43,9 @@ export default function flipCards(game) {
     }, 5500);
   }
 }
+
+//cards on not clearing correct on FF
+//TODO no card transitions on EDGE
 
 function clear() {
   allCards.forEach(card => {

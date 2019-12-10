@@ -1,4 +1,6 @@
+//TODO bankroll localdata
 let bankRoll = 1000;
+
 const bankRollDisplay = document.querySelector("#bankroll");
 
 const betInputs = {
@@ -17,23 +19,13 @@ const betsSaved = {
   tie: 0
 };
 
-let bankrollTxt = document.querySelector("#bankroll");
-
-function changeBet() {
-  console.log(this.value);
-  console.log(bets[this.dataset.bet]);
-  bets[this.dataset.bet] = this.value || 0;
-}
-
-// Object.values(betInputs).forEach(bet => {
-//   bet.addEventListener("change", changeBet);
-// });
-
+//TODO Play with this here
+//Place bets and change bankroll amount
 Object.keys(betInputs).forEach(bet => {
   betInputs[bet].addEventListener("change", function() {
     if (this.value >= 0 && this.value % 1 === 0 && this.value <= bankRoll) {
-      bankRoll += betsSaved[bet] - this.value;
-      betsSaved[bet] = this.value;
+      bankRoll += Number(betsSaved[bet] - this.value);
+      betsSaved[bet] = Number(this.value);
       bankRollDisplay.textContent = bankRoll;
     } else {
       this.value = "";
@@ -41,3 +33,41 @@ Object.keys(betInputs).forEach(bet => {
     }
   });
 });
+
+function clearBets() {
+  betsSaved.player = 0;
+  betsSaved.playerBonus = 0;
+  betsSaved.bankerBonus = 0;
+  betsSaved.banker = 0;
+  betsSaved.tie = 0;
+
+  betInputs.player.value = "";
+  betInputs.playerBonus.value = "";
+  betInputs.bankerBonus.value = "";
+  betInputs.banker.value = "";
+  betInputs.tie.value = "";
+}
+
+function calcWinning(game) {
+  let winnings = 0;
+  if (game.winner === "tie") {
+    winnings += betsSaved.tie * 8 + betsSaved.tie;
+    winnings += betsSaved.player;
+    winnings += betsSaved.banker;
+    if (game.isNatural) {
+      winnings += betsSaved.playerBonus;
+      winnings += betsSaved.bankerBonus;
+    }
+  }
+
+  if (game.winner === "player") {
+    winnings += betsSaved.player * 2;
+    if (game.bonus >= 1) winnings += betsSaved.playerBonus + betsSaved.playerBonus * game.bonus;
+  }
+
+  if (game.winner === "banker") {
+    winnings += betsSaved.banker * 2;
+    if (game.bonus >= 1) winnings += betsSaved.bankerBonus + betsSaved.bankerBonus * game.bonus;
+  }
+  return winnings;
+}

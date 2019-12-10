@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <div id="board"></div>
     <div class="game-display">
       <div class="hand player">
         <div class="label">Player</div>
@@ -34,6 +35,8 @@
           </div>
         </div>
       </div>
+
+      <div id="summary"></div>
 
       <div class="hand banker">
         <div class="scene">
@@ -61,16 +64,33 @@
 
     <button id="play">DEAL</button>
 
-    <div id="bet-table">
+    <!-- <div id="bet-table">
       <div class="tie-bet row">Tie <input type="number" placeholder="0" min="0" /> Bonus</div>
 
       <div class="banker-bet row">Banker <input type="number" placeholder="0" min="0" /><input type="number" placeholder="0" min="0" /></div>
 
       <div class="player-bet row">Player <input type="number" placeholder="0" min="0" /><input type="number" placeholder="0" min="0" /></div>
+    </div> -->
+
+    <div id="bet-grid">
+      <div class="bet-label">Tie</div>
+      <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
+      <div class="bet-label">Bonus</div>
+
+      <div class="bet-label">Banker</div>
+      <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
+      <div class="bonus-bet"><input type="number" placeholder="0" min="0" /></div>
+
+      <div class="bet-label">Player</div>
+      <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
+      <div class="bonus-bet"><input type="number" placeholder="0" min="0" /></div>
+    </div>
+    <div id="money">
+      <div>Bankroll</div>
+      <div id="bankroll">1000</div>
     </div>
 
-    <div>Bankroll</div>
-    <div id="bankroll">1000</div>
     <script src="app.js" type="module"></script>
+    <script src="bet.js"></script>
   </body>
 </html>
