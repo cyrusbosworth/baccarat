@@ -62,32 +62,27 @@
       </div>
     </div>
 
-    <button id="play">DEAL</button>
+    <div id="controls">
+      <div id="title">Baccarat</div>
+      <div id="bet-grid">
+        <div class="bet-label tie-font">Tie</div>
+        <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
+        <div class="bet-label yellow-font">Bonus</div>
 
-    <!-- <div id="bet-table">
-      <div class="tie-bet row">Tie <input type="number" placeholder="0" min="0" /> Bonus</div>
+        <div class="bet-label banker-font">Banker</div>
+        <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
+        <div class="bonus-bet"><input type="number" placeholder="0" min="0" /></div>
 
-      <div class="banker-bet row">Banker <input type="number" placeholder="0" min="0" /><input type="number" placeholder="0" min="0" /></div>
+        <div class="bet-label player-font">Player</div>
+        <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
+        <div class="bonus-bet"><input type="number" placeholder="0" min="0" /></div>
+      </div>
 
-      <div class="player-bet row">Player <input type="number" placeholder="0" min="0" /><input type="number" placeholder="0" min="0" /></div>
-    </div> -->
-
-    <div id="bet-grid">
-      <div class="bet-label">Tie</div>
-      <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
-      <div class="bet-label">Bonus</div>
-
-      <div class="bet-label">Banker</div>
-      <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
-      <div class="bonus-bet"><input type="number" placeholder="0" min="0" /></div>
-
-      <div class="bet-label">Player</div>
-      <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
-      <div class="bonus-bet"><input type="number" placeholder="0" min="0" /></div>
-    </div>
-    <div id="money">
-      <div>Bankroll</div>
-      <div id="bankroll">1000</div>
+      <div id="money">
+        <button id="play-button">DEAL</button>
+        <div>Bankroll</div>
+        <div>$<span id="bankroll">1000</span></div>
+      </div>
     </div>
 
     <script src="app.js" type="module"></script>

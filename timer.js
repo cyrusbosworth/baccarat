@@ -1,5 +1,5 @@
 //get all timers in one file
-let cardOutDelay = 250;
+let cardOutDelay = 100;
 let cardFlipDur = 750;
 let cardinDur = 1000;
 let dealDelay = 250;

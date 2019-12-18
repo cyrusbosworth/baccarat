@@ -8,7 +8,7 @@ function newRun() {
   currentRun.classList.add("run");
   board.appendChild(currentRun);
 }
-//newRun();
+newRun();
 
 export default function drawDot(game) {
   const dot = createDot(game);

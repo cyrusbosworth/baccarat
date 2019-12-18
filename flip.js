@@ -12,10 +12,18 @@ const allCards = [playerCard1, playerCard2, bankerCard1, bankerCard2, playerCard
 
 export default function flipCards(game) {
   return new Promise(function(resolve, reject) {
-    clear();
-    setCards(game);
-    console.log("in promise");
+    //Need the timeout display block for FF renderings
+    allCards.forEach(card => {
+      card.style.display = "none";
+    });
+    setTimeout(() => {
+      allCards.forEach(card => {
+        card.style.display = "block";
+      });
 
+      clear();
+    }, 20);
+    setCards(game);
     setTimeout(() => {
       playerCard1.classList.add("card-in");
       playerCard2.classList.add("card-in");

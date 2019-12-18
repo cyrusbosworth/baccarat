@@ -5,9 +5,15 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+:root {
+  --player: #3782be;
+  --banker: #bb3d20;
+  --tie: #47a344;
+  --borders: rgba(255, 255, 255, 0.3);
+  --yellow: #bdb03e;
+}
 body {
-  background-color: #0e3304;
+  background-color: #091f03;
   font-family: "Montserrat", monospace;
 
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -56,7 +62,7 @@ body {
   height: 50%;
   width: 50%;
   border-radius: 50%;
-  background-color: gold;
+  background-color: var(--yellow);
   border: 0.1vh solid rgba(0, 0, 0, 0.5);
 }
 
@@ -76,22 +82,39 @@ div .run {
 }
 
 .player-dot {
-  background-color: blue;
+  background-color: var(--player);
 }
 
 .banker-dot {
-  background-color: red;
+  background-color: var(--banker);
 }
 
 .tie-dot {
-  background-color: green;
+  background-color: var(--tie);
+}
+
+.player-font {
+  color: var(--player);
+}
+
+.banker-font {
+  color: var(--banker);
+}
+
+.tie-font {
+  color: var(--tie);
+}
+
+.yellow-font {
+  color: var(--yellow);
 }
 
 /* Cards Styling */
 
 .game-display {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 4vw;
 }
 .hand {
   display: inline-flex;
@@ -103,7 +126,7 @@ div .run {
   color: rgba(255, 255, 255, 0.7);
   font-family: "Montserrat", monospace;
   font-weight: 900;
-  padding-top: 2.5vw;
+  padding-top: 2vw;
   font-size: 1.8vw;
   width: 1.8vw;
   word-wrap: break-word;
@@ -114,10 +137,12 @@ div .run {
 
 .player .label {
   margin-left: 1vw;
+  color: var(--player);
 }
 
 .banker .label {
   margin-right: 1vw;
+  color: var(--banker);
 }
 
 .gap {
@@ -125,10 +150,10 @@ div .run {
 }
 .scene {
   background-color: rgba(0, 0, 0, 0.3);
-  width: 9vw;
-  height: 12.6vw;
+  width: 8.5vw;
+  height: 11.9vw;
   perspective: 600px;
-  margin: 1vw;
+  margin: 0.75vw;
   border-radius: 0.75vw;
 }
 
@@ -167,15 +192,16 @@ div .run {
 }
 
 input[type="number"] {
-  height: 3vw;
-  width: 3vw;
+  height: 3.5vw;
+  width: 3.5vw;
   background-color: rgba(255, 255, 255, 0.3);
   color: white;
-  font-size: 1.5vw;
+  font-size: 1.25vw;
   outline: none;
-  border: 0.5vw solid white;
   border-radius: 50%;
+
   text-align: center;
+  -moz-appearance: textfield;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -184,41 +210,89 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-#bet-table * {
-  outline: 1px red solid;
+/* Betting Grid */
+
+#bet-grid {
+  height: 14vw;
+  display: inline-grid;
+  grid-template-columns: 3fr 2fr 2fr;
+  width: 25vw;
+  color: rgba(255, 255, 255, 0.7);
+
+  font-weight: 900;
+  font-size: 1.5vw;
+  border: 0.8vw solid var(--borders);
+
+  border-radius: 1vw;
 }
 
-#bankroll {
-  color: rgba(255, 255, 255, 0.7);
+#bet-grid div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#bet-grid div:nth-child(4),
+#bet-grid div:nth-child(5),
+#bet-grid div:nth-child(6) {
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#bet-grid div:nth-child(2),
+#bet-grid div:nth-child(5),
+#bet-grid div:nth-child(8) {
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  border-right: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#money {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 0.8vw solid var(--borders);
+  border-radius: 1vw;
+  width: 15vw;
+  color: var(--yellow);
   font-family: "Montserrat", monospace;
   font-weight: 900;
   font-size: 2vw;
 }
 
-/* Betting Grid */
+#money div:nth-child(2) {
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
 
-#bet-grid {
-  display: grid;
-  grid-template-columns: 3fr 2fr 1fr;
-  width: 25vw;
-  color: rgba(255, 255, 255, 0.7);
+#controls {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1vw;
+}
 
+#controls div {
+  margin: 0 2vw;
+}
+
+#controls div div {
+  margin: 0;
+}
+#title {
+  font-size: 8vw;
+  text-transform: uppercase;
+  font-weight: 900;
+  align-items: center;
+  display: flex;
+  color: var(--yellow);
+}
+
+#play-button {
+  font-family: "Montserrat", monospace;
   font-weight: 900;
   font-size: 2vw;
-  border: 0.8vw solid rgba(255, 255, 255, 0.1);
-  gap: 3px;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 1vw;
+  margin: 1vw;
 }
-
-#bet-grid div {
-  background-color: #0e3304;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5vw 0;
-}
-
-#money {
-  float: right;
+#play-button:active {
+  position: relative;
+  top: 2px;
 }

@@ -3,7 +3,7 @@ import play from "./play.js";
 import drawDot from "./dotMaker.js";
 import flipCard from "./flip.js";
 
-const playBtn = document.querySelector("#play");
+const playBtn = document.querySelector("#play-button");
 const deck = new Deck();
 
 deck.cut(Math.floor(Math.random() * 364) + 51);
@@ -24,10 +24,6 @@ playBtn.addEventListener("click", async () => {
   finishGame();
 
   drawDot(games[gameCount]);
-  console.log(games[gameCount]);
-  console.log(games[gameCount].playerHand);
-  console.log(games[gameCount].bankerHand);
-  console.log(games[gameCount].cards);
 
   bankRoll += calcWinning(games[gameCount]);
   clearBets();
