@@ -302,3 +302,13 @@ input[type="number"]::-webkit-outer-spin-button {
   position: relative;
   top: 2px;
 }
+
+.forty {
+  animation: forty 1s infinite linear;
+}
+
+@keyframes forty {
+  to {
+    border: 3px solid gold;
+  }
+}

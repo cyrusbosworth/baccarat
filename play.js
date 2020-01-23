@@ -6,6 +6,7 @@ export default function play(deck) {
     playerScore: 0,
     bankerScore: 0,
     isNatural: false,
+    isForty: false,
     winner: null,
     bonus: 0,
     cards: 0
@@ -21,6 +22,7 @@ export default function play(deck) {
     drawCards(deck);
     scoreHands();
     determineBonus();
+    determineForty();
   }
 
   determineWinner();
@@ -54,13 +56,13 @@ function drawCards(deck) {
     if (game.bankerScore === 3 && thirdCard !== 8) {
       game.bankerHand.push(deck.deal());
     }
-    if (game.bankerScore === 4 && (thirdCard >= 2 && thirdCard <= 7)) {
+    if (game.bankerScore === 4 && thirdCard >= 2 && thirdCard <= 7) {
       game.bankerHand.push(deck.deal());
     }
-    if (game.bankerScore === 5 && (thirdCard >= 4 && thirdCard <= 7)) {
+    if (game.bankerScore === 5 && thirdCard >= 4 && thirdCard <= 7) {
       game.bankerHand.push(deck.deal());
     }
-    if (game.bankerScore === 6 && (thirdCard >= 6 && thirdCard <= 7)) {
+    if (game.bankerScore === 6 && thirdCard >= 6 && thirdCard <= 7) {
       game.bankerHand.push(deck.deal());
     }
   }
@@ -82,6 +84,11 @@ function determineWinner() {
   } else {
     game.winner = game.playerScore > game.bankerScore ? "player" : "banker";
   }
+}
+
+function determineForty() {
+  if (game.bankerHand.length === 3 && game.bankerScore === 7 && game.winner === "banker")
+    game.isForty = true;
 }
 
 function determineBonus() {

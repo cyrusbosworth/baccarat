@@ -1,4 +1,6 @@
 //get all timers in one file
+const coefficient = 1;
+
 let cardOutDelay = 100;
 let cardFlipDur = 750;
 let cardinDur = 1000;
@@ -14,7 +16,11 @@ let timers = {
   firstDealBanker: firstDealBanker,
   thirdCard1: thirdCard1,
   thirdCard2: thirdCard2,
-  finishTimes: [thirdCard2 + cardFlipDur + cardinDur + dealDelay, thirdCard2 + dealDelay, thirdCard1 + dealDelay]
+  finishTimes: [
+    thirdCard2 + cardFlipDur + cardinDur + dealDelay,
+    thirdCard2 + dealDelay,
+    thirdCard1 + dealDelay
+  ]
 };
 
 //add stats

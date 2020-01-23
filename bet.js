@@ -19,7 +19,6 @@ const betsSaved = {
   tie: 0
 };
 
-//TODO Play with this here
 //Place bets and change bankroll amount
 Object.keys(betInputs).forEach(bet => {
   betInputs[bet].addEventListener("change", function() {
@@ -62,12 +61,14 @@ function calcWinning(game) {
 
   if (game.winner === "player") {
     winnings += betsSaved.player * 2;
-    if (game.bonus >= 1) winnings += betsSaved.playerBonus + betsSaved.playerBonus * game.bonus;
+    if (game.bonus >= 1)
+      winnings += betsSaved.playerBonus + betsSaved.playerBonus * game.bonus;
   }
 
   if (game.winner === "banker") {
     winnings += betsSaved.banker * 2;
-    if (game.bonus >= 1) winnings += betsSaved.bankerBonus + betsSaved.bankerBonus * game.bonus;
+    if (game.bonus >= 1)
+      winnings += betsSaved.bankerBonus + betsSaved.bankerBonus * game.bonus;
   }
   return winnings;
 }
