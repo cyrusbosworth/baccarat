@@ -24,7 +24,7 @@ playBtn.addEventListener("click", async () => {
   finishGame();
 
   drawDot(games[gameCount]);
-
+  console.log(games[gameCount]);
   bankRoll += calcWinning(games[gameCount]);
   clearBets();
 

@@ -1,10 +1,10 @@
 //get all timers in one file
-const coefficient = 1;
+const coef = 0.25;
 
 let cardOutDelay = 100;
-let cardFlipDur = 750;
-let cardinDur = 1000;
-let dealDelay = 250;
+let cardFlipDur = 750 * coef;
+let cardinDur = 1000 * coef;
+let dealDelay = 250 * coef;
 
 const firstDealPlayer = cardOutDelay;
 const firstDealBanker = firstDealPlayer + cardFlipDur + cardinDur + dealDelay;

@@ -184,9 +184,10 @@ div .run {
   background-size: 100%;
 }
 
+/* 750 and 1000 edit these with js */
 .card-in {
-  --fade: 750ms;
-  --flip: 1000ms;
+  --fade: 175ms;
+  --flip: 250ms;
   transition: opacity var(--fade), transform var(--flip) var(--fade);
   transform: rotateY(-180deg);
   opacity: 1;
@@ -260,6 +261,10 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 2vw;
 }
 
+#money div {
+  text-align: center;
+}
+
 #money div:nth-child(2) {
   border-top: 2px solid rgba(255, 255, 255, 0.3);
   border-bottom: 2px solid rgba(255, 255, 255, 0.3);
@@ -304,6 +309,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .forty {
+  background-color: goldenrod;
   animation: forty 1s infinite linear;
 }
 

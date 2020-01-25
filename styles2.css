@@ -185,8 +185,8 @@ div .run {
 }
 
 .card-in {
-  --fade: 750ms;
-  --flip: 1000ms;
+  --fade: 175ms;
+  --flip: 250ms;
   transition: opacity var(--fade), transform var(--flip) var(--fade);
   transform: rotateY(-180deg);
   opacity: 1;

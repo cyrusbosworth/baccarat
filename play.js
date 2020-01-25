@@ -87,8 +87,9 @@ function determineWinner() {
 }
 
 function determineForty() {
-  if (game.bankerHand.length === 3 && game.bankerScore === 7 && game.winner === "banker")
+  if (game.bankerHand.length === 3 && game.bankerScore === 7 && game.playerScore < 7) {
     game.isForty = true;
+  }
 }
 
 function determineBonus() {
