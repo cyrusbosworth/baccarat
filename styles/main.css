@@ -1,5 +1,5 @@
-/* TODO this will fuck up on ultrawide monitors Media Query change all VW to px*/
-
+@import 'board.css';
+@import 'cards.css';
 * {
 	padding: 0;
 	margin: 0;
@@ -12,20 +12,10 @@
 	--borders: rgba(255, 255, 255, 0.3);
 	--yellow: #bdb03e;
 	--dark: rgba(0, 0, 0, 0.33);
+	--background-color: #091f03;
 
 	--dot-size: 2vw;
 }
-body {
-	background-color: #091f03;
-	font-family: 'Montserrat', monospace;
-
-	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-	z-index: 0;
-}
-
-/* Board Styling */
-
-/* delete first children on overflow */
 
 .player-font {
 	color: var(--player);
@@ -42,6 +32,18 @@ body {
 .yellow-font {
 	color: var(--yellow);
 }
+
+body {
+	background-color: var(--background-color);
+	font-family: 'Montserrat', monospace;
+
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	z-index: 0;
+}
+
+/* Board Styling */
+
+/* delete first children on overflow */
 
 /* Cards Styling */
 
