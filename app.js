@@ -2,6 +2,7 @@ import Deck from "./Deck.js";
 import play from "./play.js";
 import drawDot from "./dotMaker.js";
 import flipCard from "./flip.js";
+import {increaseStats} from "./stats.js";
 
 const playBtn = document.querySelector("#play-button");
 const deck = new Deck();
@@ -24,6 +25,7 @@ playBtn.addEventListener("click", async () => {
   finishGame();
 
   drawDot(games[gameCount]);
+  increaseStats(games[gameCount].winner);
   console.log(games[gameCount]);
   bankRoll += calcWinning(games[gameCount]);
   clearBets();
