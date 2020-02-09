@@ -53,7 +53,7 @@ skipBtn.addEventListener("click", () => {
   setSummary(games[gameCount]);
   displaySummary();
   gameCount++;
-  if (gameCount === games.length - 1) {
+  if (gameCount >= games.length - 1) {
     openShuffleModal();
   }
 });

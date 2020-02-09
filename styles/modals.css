@@ -6,17 +6,25 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 10;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#modal {
+#help-modal {
   background-color: white;
   height: 30vw;
   width: 30vw;
   border-radius: 1vw;
-  display: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8vw;
+  text-shadow: none;
+  text-transform: uppercase;
+  font-family: "Montserrat", monospace;
+  font-weight: 900;
 }
 
 #shuffle-modal {
@@ -45,6 +53,7 @@
   background-color: black;
   color: white;
   position: relative;
+  text-transform: uppercase;
 }
 
 .modal-btn:hover {
