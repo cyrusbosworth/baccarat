@@ -8,7 +8,14 @@ const bankerCard3 = document.querySelector(".banker .third-card");
 
 import timers from "./timer.js";
 
-const allCards = [playerCard1, playerCard2, bankerCard1, bankerCard2, playerCard3, bankerCard3];
+const allCards = [
+  playerCard1,
+  playerCard2,
+  bankerCard1,
+  bankerCard2,
+  playerCard3,
+  bankerCard3
+];
 
 export default function flipCards(game) {
   return new Promise(function(resolve, reject) {
@@ -54,10 +61,23 @@ export default function flipCards(game) {
   });
 }
 
-function clear() {
+export function clear() {
   allCards.forEach(card => {
-    card.classList.remove("card-in");
+    card.classList.remove("card-in", "card-in-no-ani");
   });
+}
+
+export function flipCardsNoAni(game) {
+  setCards(game);
+  playerCard1.classList.add("card-in-no-ani");
+  playerCard2.classList.add("card-in-no-ani");
+
+  if (game.playerHand[2]) playerCard3.classList.add("card-in-no-ani");
+
+  bankerCard1.classList.add("card-in-no-ani");
+  bankerCard2.classList.add("card-in-no-ani");
+
+  if (game.bankerHand[2]) bankerCard3.classList.add("card-in-no-ani");
 }
 
 function setCards(game) {

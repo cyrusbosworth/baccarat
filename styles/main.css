@@ -1,5 +1,7 @@
 @import "board.css";
 @import "cards.css";
+@import "modals.css";
+
 * {
   padding: 0;
   margin: 0;
@@ -64,8 +66,6 @@ body {
   align-items: center;
   color: var(--player);
   flex-direction: column;
-
-  z-index: 100;
 }
 
 .summary-in {
@@ -76,7 +76,9 @@ body {
   transition: none;
   transform: scale(0);
 }
-
+#hand-warn {
+  color: var(--yellow);
+}
 .hand {
   display: inline-flex;
   border: 0.8vw solid rgba(255, 255, 255, 0.3);

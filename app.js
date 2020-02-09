@@ -1,52 +1,67 @@
 import Deck from "./Deck.js";
 import play from "./play.js";
-import drawDot from "./dotMaker.js";
-import flipCard from "./flip.js";
+import drawDot, {clearBoard} from "./dotMaker.js";
+import flipCard, {flipCardsNoAni, clear} from "./flip.js";
 import {increaseStats} from "./stats.js";
-import {
-  setSummary,
-  hideSummary,
-  displaySummary,
-  toggleSummaryDisplay
-} from "./summary.js";
+import {setSummary, hideSummary, displaySummary} from "./summary.js";
+import {clearBets, calcWinnings, returnBets} from "./bet.js";
+import {closeModal, openShuffleModal} from "./modals.js";
 
 const playBtn = document.querySelector("#play-button");
-const deck = new Deck();
+const skipBtn = document.querySelector("#skip-button");
+const newBtn = document.querySelector("#new-shoe-button");
+const modal = document.querySelector("#modal-container");
 
-deck.cut(Math.floor(Math.random() * 364) + 51);
-
-deck.burn();
-
-const games = [];
-while (deck.hasCards) {
-  games.push(play(deck));
+let deck = new Deck();
+let games = [];
+function init() {
+  deck = new Deck();
+  deck.cut(Math.floor(Math.random() * 364) + 51);
+  deck.burn();
+  while (deck.hasCards) {
+    games.push(play(deck));
+  }
 }
 
-console.log(games[0].playerHand);
-console.log(games[0].bankerHand);
+init();
 let gameCount = 0;
 
 playBtn.addEventListener("click", async () => {
   hideSummary();
-  await flipCard(games[gameCount]);
-  finishGame();
 
+  await flipCard(games[gameCount]);
   drawDot(games[gameCount]);
   increaseStats(games[gameCount].winner);
   setSummary(games[gameCount]);
   displaySummary();
-
-  console.log(games[gameCount]);
-  bankRoll += calcWinning(games[gameCount]);
+  calcWinnings(games[gameCount]);
   clearBets();
 
-  bankRollDisplay.textContent = bankRoll;
-
   gameCount++;
+  if (gameCount === games.length - 1) {
+    openShuffleModal();
+  }
 });
 
-//this should all be in bets.js
+skipBtn.addEventListener("click", () => {
+  returnBets();
+  hideSummary();
+  clearBets();
+  flipCardsNoAni(games[gameCount]);
+  drawDot(games[gameCount]);
+  increaseStats(games[gameCount].winner);
+  setSummary(games[gameCount]);
+  displaySummary();
+  gameCount++;
+  if (gameCount === games.length - 1) {
+    openShuffleModal();
+  }
+});
 
-function finishGame() {
-  console.log("DONE");
-}
+newBtn.addEventListener("click", () => {
+  clear();
+  init();
+  hideSummary();
+  clearBoard();
+  closeModal();
+});

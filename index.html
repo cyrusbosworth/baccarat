@@ -14,96 +14,104 @@
   </head>
 
   <body>
-    <div id="board-container">
-      <div id="board"></div>
-      <div id="stats">
-        <div style="color: var(--tie)">0</div>
-        <div style="color: var(--player)">0</div>
-        <div style="color: var(--banker)">0</div>
+    <div id="container">
+      <div id="board-container">
+        <div id="board"></div>
+        <div id="stats">
+          <div style="color: var(--tie)">0</div>
+          <div style="color: var(--player)">0</div>
+          <div style="color: var(--banker)">0</div>
+        </div>
+      </div>
+
+      <div class="game-display">
+        <div class="hand player">
+          <div class="label">Player</div>
+          <div class="scene">
+            <div class="card third-card">
+              <div class="card-face front"></div>
+              <div class="card-face back"></div>
+            </div>
+          </div>
+          <div class="gap"></div>
+          <div class="scene">
+            <div class="card second-card">
+              <div class="card-face front"></div>
+              <div class="card-face back"></div>
+            </div>
+          </div>
+          <div class="scene">
+            <div class="card first-card">
+              <div class="card-face front"></div>
+              <div class="card-face back"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="summary" class="summary-out">
+          <div id="score-display"></div>
+          <div id="score-msg"></div>
+        </div>
+
+        <div class="hand banker">
+          <div class="scene">
+            <div class="card first-card">
+              <div class="card-face front"></div>
+              <div class="card-face back"></div>
+            </div>
+          </div>
+          <div class="scene">
+            <div class="card second-card">
+              <div class="card-face front"></div>
+              <div class="card-face back"></div>
+            </div>
+          </div>
+          <div class="gap"></div>
+          <div class="scene">
+            <div class="card third-card">
+              <div class="card-face front"></div>
+              <div class="card-face back"></div>
+            </div>
+          </div>
+          <div class="label">Banker</div>
+        </div>
+      </div>
+
+      <div id="controls">
+        <div id="title" title="Baccarat">Baccarat</div>
+
+        <div id="bet-grid">
+          <div class="bet-label tie-font">Tie</div>
+          <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
+          <div class="bet-label yellow-font">Bonus</div>
+
+          <div class="bet-label banker-font">Banker</div>
+          <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
+          <div class="bonus-bet"><input type="number" placeholder="0" min="0" /></div>
+
+          <div class="bet-label player-font">Player</div>
+          <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
+          <div class="bonus-bet"><input type="number" placeholder="0" min="0" /></div>
+        </div>
+
+        <div id="money">
+          <button id="play-button">DEAL</button>
+          <button id="skip-button">SKIP</button>
+          <div>Bankroll</div>
+          <div>$<span id="bankroll"></span></div>
+        </div>
       </div>
     </div>
 
-    <div class="game-display">
-      <div class="hand player">
-        <div class="label">Player</div>
-        <div class="scene">
-          <div class="card third-card">
-            <div class="card-face front"></div>
-            <div class="card-face back"></div>
-          </div>
-        </div>
-        <div class="gap"></div>
-        <div class="scene">
-          <div class="card second-card">
-            <div class="card-face front"></div>
-            <div class="card-face back"></div>
-          </div>
-        </div>
-        <div class="scene">
-          <div class="card first-card">
-            <div class="card-face front"></div>
-            <div class="card-face back"></div>
-          </div>
-        </div>
-      </div>
-
-      <div id="summary" class="summary-out">
-        <div id="score-display">
-          9 - 0
-        </div>
-        <div id="score-msg">Player wins</div>
-      </div>
-
-      <div class="hand banker">
-        <div class="scene">
-          <div class="card first-card">
-            <div class="card-face front"></div>
-            <div class="card-face back"></div>
-          </div>
-        </div>
-        <div class="scene">
-          <div class="card second-card">
-            <div class="card-face front"></div>
-            <div class="card-face back"></div>
-          </div>
-        </div>
-        <div class="gap"></div>
-        <div class="scene">
-          <div class="card third-card">
-            <div class="card-face front"></div>
-            <div class="card-face back"></div>
-          </div>
-        </div>
-        <div class="label">Banker</div>
-      </div>
-    </div>
-
-    <div id="controls">
-      <div id="title" title="Baccarat">Baccarat</div>
-
-      <div id="bet-grid">
-        <div class="bet-label tie-font">Tie</div>
-        <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
-        <div class="bet-label yellow-font">Bonus</div>
-
-        <div class="bet-label banker-font">Banker</div>
-        <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
-        <div class="bonus-bet"><input type="number" placeholder="0" min="0" /></div>
-
-        <div class="bet-label player-font">Player</div>
-        <div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
-        <div class="bonus-bet"><input type="number" placeholder="0" min="0" /></div>
-      </div>
-
-      <div id="money">
-        <button id="play-button">DEAL</button>
-        <button id="skip-button">SKIP</button>
-        <div>Bankroll</div>
-        <div>$<span id="bankroll">1000</span></div>
+    <div id="modal-container">
+      <div id="modal"></div>
+      <div id="shuffle-modal">
+        <div>Start a new shoe?</div>
+        <button id="new-shoe-button" class="modal-btn">OK</button>
       </div>
     </div>
 
     <script src="app.js" type="module"></script>
-    <script src="bet.js"></script>
+    <!-- <script src="bet.js"></script> -->
   </body>
 </html>

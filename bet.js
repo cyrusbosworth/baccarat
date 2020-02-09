@@ -1,7 +1,8 @@
 //TODO bankroll localdata
-let bankRoll = 1000;
+let bankRoll = Number(localStorage.getItem("bankRoll")) || 1000;
 
 const bankRollDisplay = document.querySelector("#bankroll");
+bankRollDisplay.textContent = bankRoll;
 
 const betInputs = {
   player: document.querySelectorAll("input")[3],
@@ -11,7 +12,7 @@ const betInputs = {
   tie: document.querySelectorAll("input")[0]
 };
 
-const betsSaved = {
+const betSaved = {
   player: 0,
   banker: 0,
   playerBonus: 0,
@@ -19,56 +20,80 @@ const betsSaved = {
   tie: 0
 };
 
+function updateBankRoll(amt) {
+  bankRoll += amt;
+  localStorage.setItem("bankRoll", bankRoll);
+}
+
 //Place bets and change bankroll amount
 Object.keys(betInputs).forEach(bet => {
   betInputs[bet].addEventListener("change", function() {
     if (this.value >= 0 && this.value % 1 === 0 && this.value <= bankRoll) {
-      bankRoll += Number(betsSaved[bet] - this.value);
-      betsSaved[bet] = Number(this.value);
+      updateBankRoll(Number(betSaved[bet] - this.value));
+
+      betSaved[bet] = Number(this.value);
       bankRollDisplay.textContent = bankRoll;
     } else {
       this.value = "";
       alert("Invalid Bet");
+
+      //clear saved bet from invalid input and restore bankroll
+      updateBankRoll(betSaved[bet]);
+      //bankRoll += betSaved[bet];
+      betSaved[bet] = 0;
+      bankRollDisplay.textContent = bankRoll;
     }
   });
 });
 
-function clearBets() {
-  betsSaved.player = 0;
-  betsSaved.playerBonus = 0;
-  betsSaved.bankerBonus = 0;
-  betsSaved.banker = 0;
-  betsSaved.tie = 0;
+export function clearBets() {
+  // for (bet of Object.keys(betSaved)) {
+  //   betSaved[bet] = 0;
+  // }
+  Object.keys(betSaved).forEach(bet => {
+    betSaved[bet] = 0;
+  });
+  Object.keys(betInputs).forEach(bet => {
+    betInputs[bet].value = "";
+  });
 
-  betInputs.player.value = "";
-  betInputs.playerBonus.value = "";
-  betInputs.bankerBonus.value = "";
-  betInputs.banker.value = "";
-  betInputs.tie.value = "";
+  // for (bet of Object.keys(betInputs)) {
+  //   betInputs[bet].value = "";
+  // }
 }
-
-function calcWinning(game) {
+export function returnBets() {
+  Object.keys(betSaved).forEach(bet => {
+    //bankRoll += betSaved[bet];
+    updateBankRoll(betSaved[bet]);
+    betSaved[bet] = 0;
+  });
+  bankRollDisplay.textContent = bankRoll;
+}
+export function calcWinnings(game) {
   let winnings = 0;
   if (game.winner === "tie") {
-    winnings += betsSaved.tie * 8 + betsSaved.tie;
-    winnings += betsSaved.player;
-    winnings += betsSaved.banker;
+    winnings += betSaved.tie * 8 + betSaved.tie;
+    winnings += betSaved.player;
+    winnings += betSaved.banker;
     if (game.isNatural) {
-      winnings += betsSaved.playerBonus;
-      winnings += betsSaved.bankerBonus;
+      winnings += betSaved.playerBonus;
+      winnings += betSaved.bankerBonus;
     }
   }
 
   if (game.winner === "player") {
-    winnings += betsSaved.player * 2;
+    winnings += betSaved.player * 2;
     if (game.bonus >= 1)
-      winnings += betsSaved.playerBonus + betsSaved.playerBonus * game.bonus;
+      winnings += betSaved.playerBonus + betSaved.playerBonus * game.bonus;
   }
 
   if (game.winner === "banker") {
-    winnings += betsSaved.banker * 2;
+    winnings += betSaved.banker * 2;
     if (game.bonus >= 1)
-      winnings += betsSaved.bankerBonus + betsSaved.bankerBonus * game.bonus;
+      winnings += betSaved.bankerBonus + betSaved.bankerBonus * game.bonus;
   }
-  return winnings;
+
+  updateBankRoll(winnings);
+  //bankRoll += winnings;
+  bankRollDisplay.textContent = bankRoll;
 }

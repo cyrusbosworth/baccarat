@@ -29,7 +29,7 @@ function createDot(game) {
   dot.classList.add("dot");
   dot.classList.add(game.winner + "-dot");
   const inner = document.createElement("div");
-  if (game.isForty) dot.classList.add("forty");
+  //if (game.isForty) dot.classList.add("forty");
   if (game.isNatural) {
     inner.classList.add("natural");
   } else if (game.bonus !== 0) {
@@ -38,4 +38,8 @@ function createDot(game) {
   }
   dot.appendChild(inner);
   return dot;
+}
+
+export function clearBoard() {
+  board.innerHTML = "";
 }
