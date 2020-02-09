@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="styles/main.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap"
-      rel="stylesheet"
-    />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="styles/main.css" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap"
+			rel="stylesheet"
+		/>
 
-    <title>Baccarat</title>
-  </head>
+		<title>Baccarat</title>
+	</head>
 
+<<<<<<< HEAD
   <body>
     <div id="container">
       <div id="board-container">
@@ -117,4 +118,95 @@
     <script src="app.js" type="module"></script>
     <!-- <script src="bet.js"></script> -->
   </body>
+=======
+	<body>
+		<div id="board-container">
+			<div id="board"></div>
+			<div id="stats">
+				<div style="color: #444">0</div>
+				<div style="color: var(--tie)">0</div>
+				<div style="color: var(--player)">0</div>
+				<div style="color: var(--banker)">0</div>
+			</div>
+		</div>
+
+		<div class="game-display">
+			<div class="hand player">
+				<div class="label">Player</div>
+				<div class="scene">
+					<div class="card third-card">
+						<div class="card-face front"></div>
+						<div class="card-face back"></div>
+					</div>
+				</div>
+				<div class="gap"></div>
+				<div class="scene">
+					<div class="card second-card">
+						<div class="card-face front"></div>
+						<div class="card-face back"></div>
+					</div>
+				</div>
+				<div class="scene">
+					<div class="card first-card">
+						<div class="card-face front"></div>
+						<div class="card-face back"></div>
+					</div>
+				</div>
+			</div>
+
+			<div id="summary"></div>
+
+			<div class="hand banker">
+				<div class="scene">
+					<div class="card first-card">
+						<div class="card-face front"></div>
+						<div class="card-face back"></div>
+					</div>
+				</div>
+				<div class="scene">
+					<div class="card second-card">
+						<div class="card-face front"></div>
+						<div class="card-face back"></div>
+					</div>
+				</div>
+				<div class="gap"></div>
+				<div class="scene">
+					<div class="card third-card">
+						<div class="card-face front"></div>
+						<div class="card-face back"></div>
+					</div>
+				</div>
+				<div class="label">Banker</div>
+			</div>
+		</div>
+
+		<div id="controls">
+			<div id="title" title="Baccarat">Baccarat</div>
+
+			<div id="bet-grid">
+				<div class="bet-label tie-font">Tie</div>
+				<div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
+				<div class="bet-label yellow-font">Bonus</div>
+
+				<div class="bet-label banker-font">Banker</div>
+				<div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
+				<div class="bonus-bet"><input type="number" placeholder="0" min="0" /></div>
+
+				<div class="bet-label player-font">Player</div>
+				<div class="inside-bet"><input type="number" placeholder="0" min="0" /></div>
+				<div class="bonus-bet"><input type="number" placeholder="0" min="0" /></div>
+			</div>
+
+			<div id="money">
+				<button id="play-button">DEAL</button>
+				<button id="skip-button">SKIP</button>
+				<div>Bankroll</div>
+				<div>$<span id="bankroll">1000</span></div>
+			</div>
+		</div>
+
+		<script src="app.js" type="module"></script>
+		<script src="bet.js"></script>
+	</body>
+>>>>>>> 4cb01bd6d87554e3e316b71d2a892c4c867ef69b
 </html>

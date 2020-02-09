@@ -38,8 +38,9 @@
 body {
   background-color: var(--background-color);
   font-family: "Montserrat", monospace;
-
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  --shadow: rgba(0, 0, 0, 0.6);
+  text-shadow: -1px -1px 0 var(--shadow), 1px -1px 0 var(--shadow),
+    -1px 1px 0 var(--shadow), 1px 1px 0 var(--shadow);
   z-index: 0;
 }
 
