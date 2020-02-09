@@ -1,44 +1,45 @@
-@import "board.css";
-@import "cards.css";
+@import 'board.css';
+@import 'cards.css';
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 :root {
-  --player: #3782be;
-  --banker: #bb3d20;
-  --tie: #47a344;
-  --borders: rgba(255, 255, 255, 0.3);
-  --yellow: #bdb03e;
-  --dark: rgba(0, 0, 0, 0.33);
-  --background-color: #091f03;
+	--player: #3782be;
+	--banker: #bb3d20;
+	--tie: #47a344;
+	--borders: rgba(255, 255, 255, 0.3);
+	--yellow: #bdb03e;
+	--dark: rgba(0, 0, 0, 0.33);
+	--background-color: #091f03;
 
-  --dot-size: 2vw;
+	--dot-size: 2vw;
 }
 
 .player-font {
-  color: var(--player);
+	color: var(--player);
 }
 
 .banker-font {
-  color: var(--banker);
+	color: var(--banker);
 }
 
 .tie-font {
-  color: var(--tie);
+	color: var(--tie);
 }
 
 .yellow-font {
-  color: var(--yellow);
+	color: var(--yellow);
 }
 
 body {
-  background-color: var(--background-color);
-  font-family: "Montserrat", monospace;
-
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  z-index: 0;
+	background-color: var(--background-color);
+	font-family: 'Montserrat', monospace;
+	--shadow: rgba(0, 0, 0, 0.6);
+	text-shadow: -1px -1px 0 var(--shadow), 1px -1px 0 var(--shadow), -1px 1px 0 var(--shadow),
+		1px 1px 0 var(--shadow);
+	z-index: 0;
 }
 
 /* Board Styling */
@@ -48,166 +49,166 @@ body {
 /* Cards Styling */
 
 .game-display {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 4vw;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 4vw;
 }
 .hand {
-  display: inline-flex;
-  border: 0.8vw solid rgba(255, 255, 255, 0.3);
-  border-radius: 1vw;
+	display: inline-flex;
+	border: 0.8vw solid rgba(255, 255, 255, 0.3);
+	border-radius: 1vw;
 }
 
 .label {
-  color: rgba(255, 255, 255, 0.7);
-  font-family: "Montserrat", monospace;
-  font-weight: 900;
-  padding-top: 2vw;
-  font-size: 1.8vw;
-  width: 1.8vw;
-  word-wrap: break-word;
-  text-align: center;
-  text-transform: uppercase;
-  line-height: 0.9;
+	color: rgba(255, 255, 255, 0.7);
+	font-family: 'Montserrat', monospace;
+	font-weight: 900;
+	padding-top: 2vw;
+	font-size: 1.8vw;
+	width: 1.8vw;
+	word-wrap: break-word;
+	text-align: center;
+	text-transform: uppercase;
+	line-height: 0.9;
 }
 
 .player .label {
-  margin-left: 1vw;
-  color: var(--player);
+	margin-left: 1vw;
+	color: var(--player);
 }
 
 .banker .label {
-  margin-right: 1vw;
-  color: var(--banker);
+	margin-right: 1vw;
+	color: var(--banker);
 }
 
 .gap {
-  width: 1vw;
+	width: 1vw;
 }
 
-input[type="number"] {
-  height: 3.5vw;
-  width: 3.5vw;
-  background-color: var(--borders);
-  color: white;
-  font-size: 1.25vw;
-  outline: none;
-  border-radius: 50%;
+input[type='number'] {
+	height: 3.5vw;
+	width: 3.5vw;
+	background-color: var(--borders);
+	color: white;
+	font-size: 1.25vw;
+	outline: none;
+	border-radius: 50%;
 
-  text-align: center;
-  -moz-appearance: textfield;
+	text-align: center;
+	-moz-appearance: textfield;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 /* Betting Grid */
 
 #bet-grid {
-  height: 14vw;
-  display: inline-grid;
-  grid-template-columns: 3fr 2fr 2fr;
-  width: 25vw;
-  color: rgba(255, 255, 255, 0.7);
+	height: 14vw;
+	display: inline-grid;
+	grid-template-columns: 3fr 2fr 2fr;
+	width: 25vw;
+	color: rgba(255, 255, 255, 0.7);
 
-  font-weight: 900;
-  font-size: 1.5vw;
-  border: 0.8vw solid var(--borders);
+	font-weight: 900;
+	font-size: 1.5vw;
+	border: 0.8vw solid var(--borders);
 
-  border-radius: 1vw;
+	border-radius: 1vw;
 }
 
 #bet-grid div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #bet-grid div:nth-child(4),
 #bet-grid div:nth-child(5),
 #bet-grid div:nth-child(6) {
-  border-top: 2px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+	border-top: 2px solid rgba(255, 255, 255, 0.3);
+	border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 #bet-grid div:nth-child(2),
 #bet-grid div:nth-child(5),
 #bet-grid div:nth-child(8) {
-  border-left: 2px solid rgba(255, 255, 255, 0.3);
-  border-right: 2px solid rgba(255, 255, 255, 0.3);
+	border-left: 2px solid rgba(255, 255, 255, 0.3);
+	border-right: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 #money {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  border: 0.8vw solid var(--borders);
-  border-radius: 1vw;
-  width: 15vw;
-  color: var(--yellow);
-  font-family: "Montserrat", monospace;
-  font-weight: 900;
-  font-size: 2vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	border: 0.8vw solid var(--borders);
+	border-radius: 1vw;
+	width: 15vw;
+	color: var(--yellow);
+	font-family: 'Montserrat', monospace;
+	font-weight: 900;
+	font-size: 2vw;
 }
 
 #money div {
-  text-align: center;
+	text-align: center;
 }
 
 #money div:nth-child(2) {
-  border-top: 2px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+	border-top: 2px solid rgba(255, 255, 255, 0.3);
+	border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 #controls {
-  display: flex;
-  justify-content: center;
-  margin: 1vw;
-  width: 90wv;
+	display: flex;
+	justify-content: center;
+	margin: 1vw;
+	width: 90wv;
 }
 
 #controls div {
-  margin: 0 2vw;
+	margin: 0 2vw;
 }
 
 #controls div div {
-  margin: 0;
+	margin: 0;
 }
 #title {
-  font-size: 7vw;
-  text-transform: uppercase;
-  font-weight: 900;
-  align-items: center;
-  display: flex;
-  color: var(--yellow);
+	font-size: 7vw;
+	text-transform: uppercase;
+	font-weight: 900;
+	align-items: center;
+	display: flex;
+	color: var(--yellow);
 }
 
 #play-button {
-  font-family: "Montserrat", monospace;
-  font-weight: 900;
-  font-size: 2vw;
-  margin: 1vw;
-  color: #091f03;
+	font-family: 'Montserrat', monospace;
+	font-weight: 900;
+	font-size: 2vw;
+	margin: 1vw;
+	color: #091f03;
 }
 
 #play-button:hover {
-  background-color: var(--borders);
+	background-color: var(--borders);
 }
 #play-button:active {
-  position: relative;
-  top: 2px;
+	position: relative;
+	top: 2px;
 }
 
 .forty {
-  background-color: goldenrod;
-  animation: forty 1s infinite linear;
+	background-color: goldenrod;
+	animation: forty 1s infinite linear;
 }
 
 @keyframes forty {
-  to {
-    border: 3px solid gold;
-  }
+	to {
+		border: 3px solid gold;
+	}
 }

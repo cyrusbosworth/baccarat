@@ -1,84 +1,85 @@
 #board {
-  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"%3E%3Cg fill="%239C92AC" fill-opacity="0.2"%3E%3Cpath fill-rule="evenodd" d="M0 0h4v4H0V0zm4 4h4v4H4V4z"/%3E%3C/g%3E%3C/svg%3E');
-  background-size: 4vw;
-  height: 14vw;
+	background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"%3E%3Cg fill="%239C92AC" fill-opacity="0.2"%3E%3Cpath fill-rule="evenodd" d="M0 0h4v4H0V0zm4 4h4v4H4V4z"/%3E%3C/g%3E%3C/svg%3E');
+	background-size: 4vw;
+	height: 14vw;
 
-  width: 86vw;
-  display: flex;
+	width: 86vw;
+	display: flex;
 
-  background-color: #ddd;
+	background-color: #ddd;
 
-  z-index: 99;
+	z-index: 99;
 }
 #stats {
-  margin-left: 5px;
-  width: 4vw;
-  background-color: #ddd;
-  display: flex;
-  flex-direction: column;
+	margin-left: 5px;
+	width: 4vw;
+	background-color: #ddd;
+	display: flex;
+	flex-direction: column;
 }
 
 #stats div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 1.8vw;
-  flex-grow: 1;
-  border: 2px solid grey;
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+	font-size: 1.8vw;
+	flex-grow: 1;
+	border: 2px solid grey;
 }
 
 #board-container {
-  margin: 2vw auto;
-  display: flex;
-  justify-content: center;
+	margin: 2vw auto;
+	display: flex;
+	justify-content: center;
 }
 .dot {
-  border-radius: 50%;
-  width: 2vw;
-  display: flex;
-  transform: scale(0);
-  transition: transform 1s cubic-bezier(0, 0, 0.25, 4);
-  z-index: 100;
-  border: 0.1vh solid rgba(0, 0, 0, 0.5);
+	border-radius: 50%;
+	width: 2vw;
+	display: flex;
+	transform: scale(0);
+	transition: transform 1s cubic-bezier(0, 0, 0.25, 4);
+	z-index: 100;
+	border: 0.1vh solid rgba(0, 0, 0, 0.5);
 }
 
 .dot:hover {
-  transform: scale(0);
+	transform: scale(0);
 }
 
 .natural {
-  margin: auto;
-  height: 50%;
-  width: 50%;
-  border-radius: 50%;
-  background-color: var(--yellow);
-  border: 0.1vh solid rgba(0, 0, 0, 0.5);
+	margin: auto;
+	height: 50%;
+	width: 50%;
+	border-radius: 50%;
+	background-color: var(--yellow);
+	border: 0.1vh solid rgba(0, 0, 0, 0.5);
 }
 
 .bonus {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8vw;
-  margin: auto;
-  color: white;
-  font-weight: 600;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.8vw;
+	margin: auto;
+	color: white;
+	font-weight: 600;
 }
 
 div .run {
-  height: 100%;
-  display: grid;
-  grid-template-rows: repeat(7, 2vw);
-  grid-auto-flow: column;
+	height: 100%;
+	display: grid;
+	grid-template-rows: repeat(7, 2vw);
+	grid-auto-flow: column;
 }
 
 .player-dot {
-  background-color: var(--player);
+	background-color: var(--player);
 }
 
 .banker-dot {
-  background-color: var(--banker);
+	background-color: var(--banker);
 }
 
 .tie-dot {
-  background-color: var(--tie);
+	background-color: var(--tie);
 }
