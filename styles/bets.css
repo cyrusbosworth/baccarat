@@ -1,0 +1,52 @@
+input[type="number"] {
+  height: 3.5vw;
+  width: 3.5vw;
+  background-color: var(--borders);
+  color: white;
+  font-size: 1.25vw;
+  outline: none;
+  border-radius: 50%;
+
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#bet-grid {
+  height: 14vw;
+  display: inline-grid;
+  grid-template-columns: 3fr 2fr 2fr;
+  width: 28vw;
+  color: rgba(255, 255, 255, 0.7);
+
+  font-weight: 900;
+  font-size: 1.5vw;
+  border: 0.8vw solid var(--borders);
+  justify-self: start;
+  border-radius: 1vw;
+}
+
+#bet-grid div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#bet-grid div:nth-child(4),
+#bet-grid div:nth-child(5),
+#bet-grid div:nth-child(6) {
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#bet-grid div:nth-child(2),
+#bet-grid div:nth-child(5),
+#bet-grid div:nth-child(8) {
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  border-right: 2px solid rgba(255, 255, 255, 0.3);
+}

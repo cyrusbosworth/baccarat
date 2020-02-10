@@ -1,6 +1,7 @@
 @import "board.css";
 @import "cards.css";
 @import "modals.css";
+@import "bets.css";
 
 * {
   padding: 0;
@@ -44,12 +45,6 @@ body {
   z-index: 0;
 }
 
-/* Board Styling */
-
-/* delete first children on overflow */
-
-/* Cards Styling */
-
 .game-display {
   width: 90vw;
   display: flex;
@@ -77,9 +72,7 @@ body {
   transition: none;
   transform: scale(0);
 }
-#hand-warn {
-  color: var(--yellow);
-}
+
 .hand {
   display: inline-flex;
   border: 0.8vw solid rgba(255, 255, 255, 0.3);
@@ -113,72 +106,18 @@ body {
   width: 1vw;
 }
 
-input[type="number"] {
-  height: 3.5vw;
-  width: 3.5vw;
-  background-color: var(--borders);
-  color: white;
-  font-size: 1.25vw;
-  outline: none;
-  border-radius: 50%;
-
-  text-align: center;
-  -moz-appearance: textfield;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Betting Grid */
-
-#bet-grid {
-  height: 14vw;
-  display: inline-grid;
-  grid-template-columns: 3fr 2fr 2fr;
-  width: 25vw;
-  color: rgba(255, 255, 255, 0.7);
-
-  font-weight: 900;
-  font-size: 1.5vw;
-  border: 0.8vw solid var(--borders);
-
-  border-radius: 1vw;
-}
-
-#bet-grid div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#bet-grid div:nth-child(4),
-#bet-grid div:nth-child(5),
-#bet-grid div:nth-child(6) {
-  border-top: 2px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-#bet-grid div:nth-child(2),
-#bet-grid div:nth-child(5),
-#bet-grid div:nth-child(8) {
-  border-left: 2px solid rgba(255, 255, 255, 0.3);
-  border-right: 2px solid rgba(255, 255, 255, 0.3);
-}
-
 #money {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   border: 0.8vw solid var(--borders);
   border-radius: 1vw;
-  width: 15vw;
+  width: 21vw;
   color: var(--yellow);
   font-family: "Montserrat", monospace;
   font-weight: 900;
-  font-size: 2vw;
+  font-size: 1.8vw;
+  justify-self: center;
 }
 
 #money div {
@@ -192,25 +131,24 @@ input[type="number"]::-webkit-outer-spin-button {
 
 #controls {
   display: flex;
-  justify-content: center;
-  margin: 1vw;
-  width: 90wv;
-}
-
-#controls div {
-  margin: 0 2vw;
+  justify-content: space-around;
+  margin: 2vw auto;
+  width: 90vw;
 }
 
 #controls div div {
   margin: 0;
 }
+
 #title {
-  font-size: 7vw;
+  font-size: 5vw;
   text-transform: uppercase;
   font-weight: 900;
   align-items: center;
+  justify-content: center;
   display: flex;
   color: var(--yellow);
+  width: 28vw;
 }
 
 #play-button {
@@ -227,15 +165,4 @@ input[type="number"]::-webkit-outer-spin-button {
 #play-button:active {
   position: relative;
   top: 2px;
-}
-
-.forty {
-  background-color: goldenrod;
-  animation: forty 1s infinite linear;
-}
-
-@keyframes forty {
-  to {
-    border: 3px solid gold;
-  }
 }

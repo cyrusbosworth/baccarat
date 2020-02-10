@@ -1,7 +1,15 @@
-//TODO bankroll localdata
+import {openModal, closeModal} from "./modals.js";
+
 let bankRoll = Number(localStorage.getItem("bankRoll")) || 1000;
 
 const bankRollDisplay = document.querySelector("#bankroll");
+const resetButton = document.querySelector("#reset-button");
+
+resetButton.addEventListener("click", () => {
+  updateBankRoll(bankRoll * -1 + 1000);
+  closeModal();
+});
+
 bankRollDisplay.textContent = bankRoll;
 
 const betInputs = {
@@ -23,6 +31,7 @@ const betSaved = {
 function updateBankRoll(amt) {
   bankRoll += amt;
   localStorage.setItem("bankRoll", bankRoll);
+  bankRollDisplay.textContent = bankRoll;
 }
 
 //Place bets and change bankroll amount
@@ -32,42 +41,31 @@ Object.keys(betInputs).forEach(bet => {
       updateBankRoll(Number(betSaved[bet] - this.value));
 
       betSaved[bet] = Number(this.value);
-      bankRollDisplay.textContent = bankRoll;
     } else {
       this.value = "";
-      alert("Invalid Bet");
+      openModal("invalid");
 
       //clear saved bet from invalid input and restore bankroll
       updateBankRoll(betSaved[bet]);
-      //bankRoll += betSaved[bet];
+
       betSaved[bet] = 0;
-      bankRollDisplay.textContent = bankRoll;
     }
   });
 });
 
 export function clearBets() {
-  // for (bet of Object.keys(betSaved)) {
-  //   betSaved[bet] = 0;
-  // }
   Object.keys(betSaved).forEach(bet => {
     betSaved[bet] = 0;
   });
   Object.keys(betInputs).forEach(bet => {
     betInputs[bet].value = "";
   });
-
-  // for (bet of Object.keys(betInputs)) {
-  //   betInputs[bet].value = "";
-  // }
 }
 export function returnBets() {
   Object.keys(betSaved).forEach(bet => {
-    //bankRoll += betSaved[bet];
     updateBankRoll(betSaved[bet]);
     betSaved[bet] = 0;
   });
-  bankRollDisplay.textContent = bankRoll;
 }
 export function calcWinnings(game) {
   let winnings = 0;
@@ -92,8 +90,5 @@ export function calcWinnings(game) {
     if (game.bonus >= 1)
       winnings += betSaved.bankerBonus + betSaved.bankerBonus * game.bonus;
   }
-
   updateBankRoll(winnings);
-  //bankRoll += winnings;
-  bankRollDisplay.textContent = bankRoll;
 }

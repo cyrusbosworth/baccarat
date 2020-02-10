@@ -5,15 +5,16 @@ import flipCard, {flipCardsNoAni, clear} from "./flip.js";
 import {increaseStats} from "./stats.js";
 import {setSummary, hideSummary, displaySummary} from "./summary.js";
 import {clearBets, calcWinnings, returnBets} from "./bet.js";
-import {closeModal, openShuffleModal} from "./modals.js";
+import {closeModal, openModal} from "./modals.js";
 
 const playBtn = document.querySelector("#play-button");
 const skipBtn = document.querySelector("#skip-button");
 const newBtn = document.querySelector("#new-shoe-button");
-const modal = document.querySelector("#modal-container");
+const helpBtn = document.querySelector("#help-button");
 
 let deck = new Deck();
 let games = [];
+
 function init() {
   deck = new Deck();
   deck.cut(Math.floor(Math.random() * 364) + 51);
@@ -39,7 +40,7 @@ playBtn.addEventListener("click", async () => {
 
   gameCount++;
   if (gameCount === games.length - 1) {
-    openShuffleModal();
+    openModal("shuffle");
   }
 });
 
@@ -54,7 +55,7 @@ skipBtn.addEventListener("click", () => {
   displaySummary();
   gameCount++;
   if (gameCount >= games.length - 1) {
-    openShuffleModal();
+    openModal("shuffle");
   }
 });
 
@@ -64,4 +65,8 @@ newBtn.addEventListener("click", () => {
   hideSummary();
   clearBoard();
   closeModal();
+});
+
+helpBtn.addEventListener("click", () => {
+  openModal("help");
 });
