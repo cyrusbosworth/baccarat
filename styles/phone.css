@@ -1,0 +1,165 @@
+@media only screen and (max-width: 750px) {
+	#board {
+		background-size: 8vw;
+		height: 28vw;
+		overflow: auto;
+		width: 80vw;
+	}
+	#stats {
+		margin-left: 5px;
+		width: 8vw;
+		background-color: #ddd;
+		display: flex;
+		flex-direction: column;
+	}
+	#stats div {
+		font-size: 4vw;
+		font-weight: 300;
+	}
+
+	.dot {
+		width: 4vw;
+
+		transition: transform 1s ease-in-out;
+
+		border: 1px solid rgba(0, 0, 0, 0.5);
+	}
+	div .run {
+		grid-template-rows: repeat(7, 4vw);
+	}
+	.bonus {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 1.6vw;
+		margin: auto;
+		color: white;
+		font-weight: 300;
+	}
+	.game-display {
+		width: 90vw;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		margin: 0 auto;
+	}
+
+	.hand {
+		width: 90vw;
+		border: 1.5vw solid rgba(255, 255, 255, 0.3);
+		border-radius: 1.5vw;
+		display: flex;
+		margin: 2vw auto;
+	}
+	.scene {
+		width: 21.25vw;
+		height: 29.75vw;
+
+		margin: 1.5vw;
+		border-radius: 1.5vw;
+	}
+	#summary-container {
+		height: 7vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.label {
+		color: rgba(255, 255, 255, 0.7);
+		font-family: 'Montserrat', monospace;
+		font-weight: 900;
+
+		font-size: 5vw;
+		width: 2vw;
+		word-wrap: break-word;
+		text-align: center;
+		text-transform: uppercase;
+		line-height: 5vw;
+	}
+	.banker .label {
+		margin-right: 4vw;
+		margin-left: 3vw;
+		color: var(--banker);
+	}
+
+	.player .label {
+		margin-right: 4vw;
+		margin-left: 3vw;
+	}
+	.banker .label {
+		order: -1 !important;
+	}
+
+	.player .card-3 {
+		order: 4;
+	}
+	.player .card-2 {
+		order: 2;
+	}
+	.player .card-1 {
+		order: 1;
+	}
+	.player .gap {
+		order: 3;
+	}
+
+	.gap {
+		width: 6vw;
+	}
+
+	#summary {
+		width: 100%;
+		font-size: 5vw;
+		flex-direction: row;
+		justify-content: space-evenly;
+	}
+	#controls {
+		flex-direction: column;
+	}
+	#bet-grid {
+		height: 45vw;
+		width: 90vw;
+		font-size: 5vw;
+		border: 1.5vw solid rgba(255, 255, 255, 0.3);
+		border-radius: 1.5vw;
+	}
+	input[type='number'] {
+		height: 10vw;
+		width: 10vw;
+		font-size: 4vw;
+	}
+	#bet-grid #buttons {
+		font-size: 6vw;
+	}
+
+	.active-bet {
+		box-shadow: 0 0 0 5px var(--yellow);
+		filter: drop-shadow(8px 8px 2px rgba(0, 0, 0, 0.9));
+		border: 2px solid var(--yellow);
+		background-color: black !important;
+	}
+
+	#bankroll-container {
+		order: -1;
+		font-size: 5vw;
+		width: 100%;
+	}
+	#title-container {
+		display: none;
+	}
+
+	#help-modal {
+		height: 60vh;
+		width: 75vw;
+	}
+
+	.modal-btn {
+		font-size: 5vw;
+		margin-top: 5vw;
+		padding: 3vw;
+	}
+
+	.popup {
+		height: 20vh;
+		width: 75vw;
+		font-size: 5vw;
+	}
+}

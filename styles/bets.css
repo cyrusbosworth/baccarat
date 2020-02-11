@@ -1,52 +1,111 @@
-input[type="number"] {
-  height: 3.5vw;
-  width: 3.5vw;
-  background-color: var(--borders);
-  color: white;
-  font-size: 1.25vw;
-  outline: none;
-  border-radius: 50%;
+input[type='number'] {
+	height: 3vw;
+	width: 3vw;
+	background-color: var(--borders);
+	color: white;
+	font-weight: bold;
+	font-size: 1vw;
 
-  text-align: center;
-  -moz-appearance: textfield;
+	border-radius: 50%;
+
+	text-align: center;
+	outline: none;
+	-moz-appearance: textfield;
+}
+.bet-ani {
+	animation: shadow-pulse 1s infinite alternate;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.active-bet {
+	box-shadow: 0 0 0 5px var(--yellow);
+	filter: drop-shadow(8px 8px 2px rgba(0, 0, 0, 0.9));
+	border: 5px solid var(--yellow);
+	background-color: black !important;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 #bet-grid {
-  height: 14vw;
-  display: inline-grid;
-  grid-template-columns: 3fr 2fr 2fr;
-  width: 28vw;
-  color: rgba(255, 255, 255, 0.7);
+	height: 14vw;
+	display: inline-grid;
+	grid-template-columns: 3fr 2fr 2fr 2fr;
+	width: 28vw;
 
-  font-weight: 900;
-  font-size: 1.5vw;
-  border: 0.8vw solid var(--borders);
-  justify-self: start;
-  border-radius: 1vw;
+	color: rgba(255, 255, 255, 0.7);
+
+	font-weight: 900;
+	font-size: 1.5vw;
+	border: 0.8vw solid var(--borders);
+	justify-self: start;
+	border-radius: 1vw;
 }
 
 #bet-grid div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #bet-grid div:nth-child(4),
 #bet-grid div:nth-child(5),
 #bet-grid div:nth-child(6) {
-  border-top: 2px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+	border-top: 2px solid rgba(255, 255, 255, 0.3);
+	border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 #bet-grid div:nth-child(2),
 #bet-grid div:nth-child(5),
 #bet-grid div:nth-child(8) {
-  border-left: 2px solid rgba(255, 255, 255, 0.3);
-  border-right: 2px solid rgba(255, 255, 255, 0.3);
+	border-left: 2px solid rgba(255, 255, 255, 0.3);
+	border-right: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#bet-grid #buttons {
+	grid-area: 1/4/4/5;
+	display: flex;
+	flex-direction: column;
+	border-left: 2px solid rgba(255, 255, 255, 0.3);
+	justify-content: space-evenly;
+	color: var(--yellow);
+	font-size: 2.5vw;
+}
+i {
+	filter: drop-shadow(8px 8px 2px rgba(0, 0, 0, 0.9));
+}
+i:hover,
+i:focus {
+	transform: scale(1.05);
+	transition: all 400ms ease-in;
+	color: rgba(255, 255, 255, 0.9);
+}
+i:active {
+	position: relative;
+	top: 3px;
+}
+
+i.disabled {
+	color: grey;
+}
+i.disabled:hover,
+i.disabled:focus {
+	transform: none;
+	transition: none;
+	color: grey;
+}
+i.disabled:active {
+	position: relative;
+	top: 0;
+}
+
+@keyframes shadow-pulse {
+	0% {
+		box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+	}
+	100% {
+		box-shadow: 0 0 3px 2px rgba(255, 255, 255, 0.9);
+	}
 }

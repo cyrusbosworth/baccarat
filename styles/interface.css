@@ -1,0 +1,67 @@
+#money {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border: 0.8vw solid var(--borders);
+	border-radius: 1vw;
+	width: 21vw;
+	color: var(--yellow);
+	font-family: 'Montserrat', monospace;
+	font-weight: 900;
+	font-size: 1.8vw;
+	text-align: center;
+}
+
+#controls {
+	display: flex;
+	justify-content: space-evenly;
+	margin: 1.5vw auto 0 auto;
+	width: 90vw;
+}
+
+#title-container {
+	width: 31vw;
+
+	font-size: 4.8vw;
+	align-items: center;
+	justify-content: left;
+	display: flex;
+	color: var(--yellow);
+	text-transform: uppercase;
+	font-weight: 900;
+}
+
+#bankroll-container {
+	width: 31vw;
+	color: var(--yellow);
+	display: flex;
+	font-family: 'Montserrat', monospace;
+	font-weight: 900;
+	font-size: 1.8vw;
+	align-items: center;
+	justify-content: space-around;
+}
+#summary-container {
+	height: 100%;
+}
+#summary {
+	height: 100%;
+	text-transform: uppercase;
+	font-family: 'Montserrat', monospace;
+	font-weight: 900;
+	font-size: 1.8vw;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	color: var(--player);
+	flex-direction: column;
+}
+
+.summary-in {
+	transition: transform 1s ease-in-out;
+	transform: scale(1);
+}
+.summary-out {
+	transition: none;
+	transform: scale(0);
+}
