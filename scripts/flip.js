@@ -61,6 +61,7 @@ export function clear() {
 }
 
 export function flipCardsNoAni(game) {
+	clear();
 	setCards(game);
 	playerCard1.classList.add('card-in-no-ani');
 	playerCard2.classList.add('card-in-no-ani');
