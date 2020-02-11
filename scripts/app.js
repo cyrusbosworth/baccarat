@@ -12,6 +12,7 @@ const skipBtn = document.querySelector('#skip-button');
 const newBtn = document.querySelector('#new-shoe-button');
 const helpBtn = document.querySelector('#help-button');
 
+console.log('hello');
 let deck = new Deck();
 let games = [];
 
